@@ -29,4 +29,9 @@ public class ExpenseController {
     public void deleteExpenseById(@RequestParam Long id) {
         expenseService.deleteExpenseById(id);
     }
+
+    @PostMapping("/expenses")
+    public Expense saveExpenseDetails(@RequestBody Expense expense) {
+        return expenseService.saveExpenseDetails(expense);
+    }
 }
