@@ -2,8 +2,7 @@ package com.example.expensetrackerapi.controller;
 
 import com.example.expensetrackerapi.entity.Expense;
 import com.example.expensetrackerapi.service.ExpenseService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +18,15 @@ public class ExpenseController {
     @GetMapping("/expenses")
     public List<Expense> getAllExpenses() {
         return expenseService.getAllExpenses();
+    }
+
+    @GetMapping("/expenses/{id}")
+    public Expense getExpenseById(@PathVariable Long id) {
+        return expenseService.getExpenseById(id);
+    }
+
+    @DeleteMapping("/expenses")
+    public void deleteExpenseById(@RequestParam Long id) {
+        expenseService.deleteExpenseById(id);
     }
 }
