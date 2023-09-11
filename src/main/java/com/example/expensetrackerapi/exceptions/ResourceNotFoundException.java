@@ -1,9 +1,9 @@
 package com.example.expensetrackerapi.exceptions;
 
-public class ExpenseNotFoundException extends RuntimeException {
+public class ResourceNotFoundException extends RuntimeException {
     public static final long serialVersionUID = 1L;
 
-    public ExpenseNotFoundException(String message) {
+    public ResourceNotFoundException(String message) {
         super(message);
     }
 }
