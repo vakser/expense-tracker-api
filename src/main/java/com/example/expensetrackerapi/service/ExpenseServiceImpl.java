@@ -1,6 +1,7 @@
 package com.example.expensetrackerapi.service;
 
 import com.example.expensetrackerapi.entity.Expense;
+import com.example.expensetrackerapi.exceptions.ExpenseNotFoundException;
 import com.example.expensetrackerapi.repository.ExpenseRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,7 +28,7 @@ public class ExpenseServiceImpl implements ExpenseService {
         if (expense.isPresent()) {
             return expense.get();
         }
-        throw new RuntimeException("Expense is not found for the id " + id);
+        throw new ExpenseNotFoundException("Expense is not found for the id " + id);
     }
 
     @Override
