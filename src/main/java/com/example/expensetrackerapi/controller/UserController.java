@@ -5,9 +5,7 @@ import com.example.expensetrackerapi.entity.UserModel;
 import com.example.expensetrackerapi.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -22,5 +20,10 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<User> save(@Valid @RequestBody UserModel user) {
         return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> readUser(@PathVariable Long id) {
+        return new ResponseEntity<>(userService.readUser(id), HttpStatus.OK);
     }
 }
