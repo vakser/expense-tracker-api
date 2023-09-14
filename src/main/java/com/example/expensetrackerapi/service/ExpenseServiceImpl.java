@@ -23,7 +23,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public Page<Expense> getAllExpenses(Pageable page) {
-        return expenseRepository.findAll(page);
+        return expenseRepository.findByUserId(userService.getLoggedInUser().getId(), page);
     }
 
     @Override
