@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.sql.Date;
+import java.util.Optional;
 
 public interface ExpenseRepository extends JpaRepository<Expense, Long> {
     Page<Expense> findByCategory(String category, Pageable page);
@@ -15,4 +16,6 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
     Page<Expense> findByDateBetween(Date startDate, Date endDate, Pageable page);
 
     Page<Expense> findByUserId(Long userId, Pageable pageable);
+
+    Optional<Expense> findByUserIdAndId(Long userId, Long expenseId);
 }
