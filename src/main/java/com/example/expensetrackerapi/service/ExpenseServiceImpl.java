@@ -14,9 +14,11 @@ import java.util.Optional;
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
     private final ExpenseRepository expenseRepository;
+    private final UserService userService;
 
-    public ExpenseServiceImpl(ExpenseRepository expenseRepository) {
+    public ExpenseServiceImpl(ExpenseRepository expenseRepository, UserService userService) {
         this.expenseRepository = expenseRepository;
+        this.userService = userService;
     }
 
     @Override
@@ -41,6 +43,7 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public Expense saveExpenseDetails(Expense expense) {
+        expense.setUser(userService.getLoggedInUser());
         return expenseRepository.save(expense);
     }
 
